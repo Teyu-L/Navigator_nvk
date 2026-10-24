@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>UniNav — Indoor University Navigation</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Control Header -->
+      <header class="app-header">
+        <div class="header-brand">
+          <div class="brand-logo">🎓</div>
+          <div class="brand-text">
+            <h1>UniNav</h1>
+            <span class="brand-sub">Indoor Navigation</span>
+          </div>
+        </div>
+
+        <!-- Point A & Point B Search Controls -->
+        <div class="route-inputs-card">
+          <div class="search-group">
+            <div class="input-prefix start-dot">A</div>
+            <input
+              type="text"
+              id="start-input"
+              class="search-input"
+              placeholder="Select Start Point (e.g., Caffe, D105)..."
+              autocomplete="off"
+            />
+            <div id="start-dropdown" class="dropdown-list hidden"></div>
+          </div>
+
+          <div class="swap-divider">
+            <button id="swap-btn" class="swap-button" title="Swap Start and Destination">
+              ⇅
+            </button>
+          </div>
+
+          <div class="search-group">
+            <div class="input-prefix end-dot">B</div>
+            <input
+              type="text"
+              id="end-input"
+              class="search-input"
+              placeholder="Select Destination (e.g., Library, J106)..."
+              autocomplete="off"
+            />
+            <div id="end-dropdown" class="dropdown-list hidden"></div>
+          </div>
+
+          <!-- Quick Location Chips -->
+          <div class="chips-scroll">
+            <span class="chip" data-target="Caffe">☕ Cafeteria</span>
+            <span class="chip" data-target="Library">📚 Library</span>
+            <span class="chip" data-target="Medical">🩺 Medical</span>
+            <span class="chip" data-target="Dean">🏛️ Dean Office</span>
+            <span class="chip" data-target="Entrance">🚪 Main Entrance</span>
+            <span class="chip" data-target="WC">🚻 Restroom</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Map Display Area -->
+      <main class="map-section">
+        <div id="map-container" class="map-container">
+          <!-- Image and Canvas dynamically populated by MapRenderer -->
+        </div>
+
+        <div id="loading-overlay" class="loading-overlay">
+          <div class="spinner"></div>
+          <span>Loading floor plans…</span>
+        </div>
+
+        <!-- Floating Zoom Controls -->
+        <div class="floating-zoom-controls">
+          <button id="zoom-in-btn" class="icon-btn" title="Zoom In">+</button>
+          <button id="zoom-out-btn" class="icon-btn" title="Zoom Out">−</button>
+          <button id="zoom-reset-btn" class="icon-btn" title="Reset Map View">🎯</button>
+        </div>
+
+        <!-- Floating Floor Switcher Bar -->
+        <div class="floating-floor-switcher">
+          <span class="switcher-title">Floor</span>
+          <div class="floor-btn-group">
+            <button id="floor-btn-1" class="floor-btn active">1</button>
+            <button id="floor-btn-2" class="floor-btn">2</button>
+            <button id="floor-btn-3" class="floor-btn">3</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Bottom Sheet / Route Navigation Footer -->
+      <footer class="app-footer">
+        <div id="route-info" class="route-info-box hidden">
+          <!-- Route metrics populated by UIController -->
+        </div>
+
+        <!-- Multi-floor segment bar -->
+        <div id="segment-bar" class="segment-bar hidden">
+          <!-- Step buttons populated by UIController -->
+        </div>
+
+        <div class="footer-actions">
+          <button id="clear-btn" class="btn btn-secondary">Clear Route</button>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

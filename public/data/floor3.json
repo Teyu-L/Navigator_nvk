@@ -1,0 +1,1487 @@
+{
+  "nodes": {
+    "stairs_D_south_f3": {
+      "x": 172,
+      "y": 527,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_D_south_f3",
+        "stairs D south f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "D305": {
+      "x": 170,
+      "y": 521,
+      "floor": 3,
+      "search_aliases": [
+        "D305",
+        "Room D305",
+        "Auditorium D305",
+        "Aud. D305",
+        "Class D305"
+      ]
+    },
+    "D306": {
+      "x": 168,
+      "y": 516,
+      "floor": 3,
+      "search_aliases": [
+        "D306",
+        "Room D306",
+        "Auditorium D306",
+        "Aud. D306",
+        "Class D306"
+      ]
+    },
+    "D307": {
+      "x": 165,
+      "y": 505,
+      "floor": 3,
+      "search_aliases": [
+        "D307",
+        "Room D307",
+        "Auditorium D307",
+        "Aud. D307",
+        "Class D307"
+      ]
+    },
+    "D304": {
+      "x": 163,
+      "y": 499,
+      "floor": 3,
+      "search_aliases": [
+        "D304",
+        "Room D304",
+        "Auditorium D304",
+        "Aud. D304",
+        "Class D304"
+      ]
+    },
+    "D308": {
+      "x": 161,
+      "y": 493,
+      "floor": 3,
+      "search_aliases": [
+        "D308",
+        "Room D308",
+        "Auditorium D308",
+        "Aud. D308",
+        "Class D308"
+      ]
+    },
+    "D_Node1_f3": {
+      "x": 160,
+      "y": 490,
+      "floor": 3,
+      "search_aliases": [
+        "D_Node1_f3",
+        "D Node1 f3"
+      ]
+    },
+    "D309": {
+      "x": 161,
+      "y": 482,
+      "floor": 3,
+      "search_aliases": [
+        "D309",
+        "Room D309",
+        "Auditorium D309",
+        "Aud. D309",
+        "Class D309"
+      ]
+    },
+    "D303_D310": {
+      "x": 162,
+      "y": 476,
+      "floor": 3,
+      "search_aliases": [
+        "D303_D310",
+        "D303 D310",
+        "D303",
+        "Room D303",
+        "Auditorium D303",
+        "Aud. D303",
+        "Class D303",
+        "D310",
+        "Room D310",
+        "Auditorium D310",
+        "Aud. D310",
+        "Class D310"
+      ]
+    },
+    "D311": {
+      "x": 163,
+      "y": 470,
+      "floor": 3,
+      "search_aliases": [
+        "D311",
+        "Room D311",
+        "Auditorium D311",
+        "Aud. D311",
+        "Class D311"
+      ]
+    },
+    "D302": {
+      "x": 164,
+      "y": 460,
+      "floor": 3,
+      "search_aliases": [
+        "D302",
+        "Room D302",
+        "Auditorium D302",
+        "Aud. D302",
+        "Class D302"
+      ]
+    },
+    "D312_D301": {
+      "x": 165,
+      "y": 451,
+      "floor": 3,
+      "search_aliases": [
+        "D312_D301",
+        "D312 D301",
+        "D312",
+        "Room D312",
+        "Auditorium D312",
+        "Aud. D312",
+        "Class D312",
+        "D301",
+        "Room D301",
+        "Auditorium D301",
+        "Aud. D301",
+        "Class D301"
+      ]
+    },
+    "D313_stairs_D_east_f3": {
+      "x": 166,
+      "y": 446,
+      "floor": 3,
+      "search_aliases": [
+        "D313_stairs_D_east_f3",
+        "D313 stairs D east f3",
+        "D313",
+        "Room D313",
+        "Auditorium D313",
+        "Aud. D313",
+        "Class D313",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "D314": {
+      "x": 167,
+      "y": 435,
+      "floor": 3,
+      "search_aliases": [
+        "D314",
+        "Room D314",
+        "Auditorium D314",
+        "Aud. D314",
+        "Class D314"
+      ]
+    },
+    "D315": {
+      "x": 169,
+      "y": 418,
+      "floor": 3,
+      "search_aliases": [
+        "D315",
+        "Room D315",
+        "Auditorium D315",
+        "Aud. D315",
+        "Class D315"
+      ]
+    },
+    "WC_D_f3": {
+      "x": 169,
+      "y": 415,
+      "floor": 3,
+      "search_aliases": [
+        "WC_D_f3",
+        "WC D f3",
+        "Restroom",
+        "Toilet",
+        "WC",
+        "Washroom"
+      ]
+    },
+    "D316": {
+      "x": 170,
+      "y": 407,
+      "floor": 3,
+      "search_aliases": [
+        "D316",
+        "Room D316",
+        "Auditorium D316",
+        "Aud. D316",
+        "Class D316"
+      ]
+    },
+    "D317": {
+      "x": 165,
+      "y": 384,
+      "floor": 3,
+      "search_aliases": [
+        "D317",
+        "Room D317",
+        "Auditorium D317",
+        "Aud. D317",
+        "Class D317"
+      ]
+    },
+    "E_Node1_f3": {
+      "x": 165,
+      "y": 363,
+      "floor": 3,
+      "search_aliases": [
+        "E_Node1_f3",
+        "E Node1 f3"
+      ]
+    },
+    "E_Node2_f3": {
+      "x": 202,
+      "y": 363,
+      "floor": 3,
+      "search_aliases": [
+        "E_Node2_f3",
+        "E Node2 f3"
+      ]
+    },
+    "E301": {
+      "x": 202,
+      "y": 342,
+      "floor": 3,
+      "search_aliases": [
+        "E301",
+        "Room E301",
+        "Auditorium E301",
+        "Aud. E301",
+        "Class E301"
+      ]
+    },
+    "E302": {
+      "x": 202,
+      "y": 314,
+      "floor": 3,
+      "search_aliases": [
+        "E302",
+        "Room E302",
+        "Auditorium E302",
+        "Aud. E302",
+        "Class E302"
+      ]
+    },
+    "stairs_E_east_f3": {
+      "x": 202,
+      "y": 297,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_E_east_f3",
+        "stairs E east f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "E303": {
+      "x": 202,
+      "y": 283,
+      "floor": 3,
+      "search_aliases": [
+        "E303",
+        "Room E303",
+        "Auditorium E303",
+        "Aud. E303",
+        "Class E303"
+      ]
+    },
+    "E304": {
+      "x": 202,
+      "y": 259,
+      "floor": 3,
+      "search_aliases": [
+        "E304",
+        "Room E304",
+        "Auditorium E304",
+        "Aud. E304",
+        "Class E304"
+      ]
+    },
+    "Conference_Hall_303": {
+      "x": 202,
+      "y": 257,
+      "floor": 3,
+      "search_aliases": [
+        "Conference_Hall_303",
+        "Conference Hall 303"
+      ]
+    },
+    "stairs_E_west_f3": {
+      "x": 207,
+      "y": 217,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_E_west_f3",
+        "stairs E west f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "WC_E_f3": {
+      "x": 210,
+      "y": 214,
+      "floor": 3,
+      "search_aliases": [
+        "WC_E_f3",
+        "WC E f3",
+        "Restroom",
+        "Toilet",
+        "WC",
+        "Washroom"
+      ]
+    },
+    "E_Node3_f3": {
+      "x": 223,
+      "y": 195,
+      "floor": 3,
+      "search_aliases": [
+        "E_Node3_f3",
+        "E Node3 f3"
+      ]
+    },
+    "stairs_F_f3": {
+      "x": 241,
+      "y": 195,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_F_f3",
+        "stairs F f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "F_Node1_f3": {
+      "x": 255,
+      "y": 195,
+      "floor": 3,
+      "search_aliases": [
+        "F_Node1_f3",
+        "F Node1 f3"
+      ]
+    },
+    "AI_Lab_302": {
+      "x": 254,
+      "y": 169,
+      "floor": 3,
+      "search_aliases": [
+        "AI_Lab_302",
+        "AI Lab 302"
+      ]
+    },
+    "stairs_G_west_f3": {
+      "x": 395,
+      "y": 169,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_G_west_f3",
+        "stairs G west f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "G_Node1_f3": {
+      "x": 425,
+      "y": 169,
+      "floor": 3,
+      "search_aliases": [
+        "G_Node1_f3",
+        "G Node1 f3"
+      ]
+    },
+    "G301": {
+      "x": 431,
+      "y": 177,
+      "floor": 3,
+      "search_aliases": [
+        "G301",
+        "Room G301",
+        "Auditorium G301",
+        "Aud. G301",
+        "Class G301"
+      ]
+    },
+    "stairs_G_central_f3": {
+      "x": 451,
+      "y": 196,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_G_central_f3",
+        "stairs G central f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "G302": {
+      "x": 475,
+      "y": 220,
+      "floor": 3,
+      "search_aliases": [
+        "G302",
+        "Room G302",
+        "Auditorium G302",
+        "Aud. G302",
+        "Class G302"
+      ]
+    },
+    "WC_G_f3": {
+      "x": 499,
+      "y": 244,
+      "floor": 3,
+      "search_aliases": [
+        "WC_G_f3",
+        "WC G f3",
+        "Restroom",
+        "Toilet",
+        "WC",
+        "Washroom"
+      ]
+    },
+    "stairs_H_north_f3": {
+      "x": 517,
+      "y": 262,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_H_north_f3",
+        "stairs H north f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "Rectorate_301": {
+      "x": 517,
+      "y": 320,
+      "floor": 3,
+      "search_aliases": [
+        "Rectorate_301",
+        "Rectorate 301",
+        "Rector Office",
+        "Rectorate",
+        "Administration"
+      ]
+    },
+    "entrance_H_in_f3": {
+      "x": 517,
+      "y": 331,
+      "floor": 3,
+      "search_aliases": [
+        "entrance_H_in_f3",
+        "entrance H in f3",
+        "Entrance",
+        "Exit",
+        "Main Gate"
+      ]
+    },
+    "stairs_H_south_f3": {
+      "x": 517,
+      "y": 381,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_H_south_f3",
+        "stairs H south f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "stairs_I_east_f3": {
+      "x": 477,
+      "y": 381,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_I_east_f3",
+        "stairs I east f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "stairs_I_west_f3": {
+      "x": 440,
+      "y": 381,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_I_west_f3",
+        "stairs I west f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "I305": {
+      "x": 440,
+      "y": 403,
+      "floor": 3,
+      "search_aliases": [
+        "I305",
+        "Room I305",
+        "Auditorium I305",
+        "Aud. I305",
+        "Class I305"
+      ]
+    },
+    "WC_I_f3": {
+      "x": 440,
+      "y": 406,
+      "floor": 3,
+      "search_aliases": [
+        "WC_I_f3",
+        "WC I f3",
+        "Restroom",
+        "Toilet",
+        "WC",
+        "Washroom"
+      ]
+    },
+    "I304": {
+      "x": 440,
+      "y": 415,
+      "floor": 3,
+      "search_aliases": [
+        "I304",
+        "Room I304",
+        "Auditorium I304",
+        "Aud. I304",
+        "Class I304"
+      ]
+    },
+    "I303": {
+      "x": 440,
+      "y": 457,
+      "floor": 3,
+      "search_aliases": [
+        "I303",
+        "Room I303",
+        "Auditorium I303",
+        "Aud. I303",
+        "Class I303"
+      ]
+    },
+    "I301": {
+      "x": 440,
+      "y": 468,
+      "floor": 3,
+      "search_aliases": [
+        "I301",
+        "Room I301",
+        "Auditorium I301",
+        "Aud. I301",
+        "Class I301"
+      ]
+    },
+    "I302": {
+      "x": 440,
+      "y": 506,
+      "floor": 3,
+      "search_aliases": [
+        "I302",
+        "Room I302",
+        "Auditorium I302",
+        "Aud. I302",
+        "Class I302"
+      ]
+    },
+    "I_Node2_f3": {
+      "x": 440,
+      "y": 515,
+      "floor": 3,
+      "search_aliases": [
+        "I_Node2_f3",
+        "I Node2 f3"
+      ]
+    },
+    "I_Node1_f3": {
+      "x": 418,
+      "y": 515,
+      "floor": 3,
+      "search_aliases": [
+        "I_Node1_f3",
+        "I Node1 f3"
+      ]
+    },
+    "WC_K_f3": {
+      "x": 418,
+      "y": 533,
+      "floor": 3,
+      "search_aliases": [
+        "WC_K_f3",
+        "WC K f3",
+        "Restroom",
+        "Toilet",
+        "WC",
+        "Washroom"
+      ]
+    },
+    "K_Node4_f3": {
+      "x": 418,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "K_Node4_f3",
+        "K Node4 f3"
+      ]
+    },
+    "stairs_K_east_f3": {
+      "x": 470,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_K_east_f3",
+        "stairs K east f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "K301": {
+      "x": 470,
+      "y": 567,
+      "floor": 3,
+      "search_aliases": [
+        "K301",
+        "Room K301",
+        "Auditorium K301",
+        "Aud. K301",
+        "Class K301"
+      ]
+    },
+    "K302": {
+      "x": 470,
+      "y": 574,
+      "floor": 3,
+      "search_aliases": [
+        "K302",
+        "Room K302",
+        "Auditorium K302",
+        "Aud. K302",
+        "Class K302"
+      ]
+    },
+    "K303": {
+      "x": 470,
+      "y": 585,
+      "floor": 3,
+      "search_aliases": [
+        "K303",
+        "Room K303",
+        "Auditorium K303",
+        "Aud. K303",
+        "Class K303"
+      ]
+    },
+    "K311": {
+      "x": 470,
+      "y": 598,
+      "floor": 3,
+      "search_aliases": [
+        "K311",
+        "Room K311",
+        "Auditorium K311",
+        "Aud. K311",
+        "Class K311"
+      ]
+    },
+    "K309": {
+      "x": 470,
+      "y": 631,
+      "floor": 3,
+      "search_aliases": [
+        "K309",
+        "Room K309",
+        "Auditorium K309",
+        "Aud. K309",
+        "Class K309"
+      ]
+    },
+    "K304": {
+      "x": 470,
+      "y": 665,
+      "floor": 3,
+      "search_aliases": [
+        "K304",
+        "Room K304",
+        "Auditorium K304",
+        "Aud. K304",
+        "Class K304"
+      ]
+    },
+    "K305": {
+      "x": 470,
+      "y": 668,
+      "floor": 3,
+      "search_aliases": [
+        "K305",
+        "Room K305",
+        "Auditorium K305",
+        "Aud. K305",
+        "Class K305"
+      ]
+    },
+    "K306": {
+      "x": 470,
+      "y": 672,
+      "floor": 3,
+      "search_aliases": [
+        "K306",
+        "Room K306",
+        "Auditorium K306",
+        "Aud. K306",
+        "Class K306"
+      ]
+    },
+    "stairs_K_south_f3": {
+      "x": 470,
+      "y": 676,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_K_south_f3",
+        "stairs K south f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "K307": {
+      "x": 466,
+      "y": 672,
+      "floor": 3,
+      "search_aliases": [
+        "K307",
+        "Room K307",
+        "Auditorium K307",
+        "Aud. K307",
+        "Class K307"
+      ]
+    },
+    "K_Node3_f3": {
+      "x": 446,
+      "y": 651,
+      "floor": 3,
+      "search_aliases": [
+        "K_Node3_f3",
+        "K Node3 f3"
+      ]
+    },
+    "K308": {
+      "x": 442,
+      "y": 655,
+      "floor": 3,
+      "search_aliases": [
+        "K308",
+        "Room K308",
+        "Auditorium K308",
+        "Aud. K308",
+        "Class K308"
+      ]
+    },
+    "K_Node2_f3": {
+      "x": 407,
+      "y": 683,
+      "floor": 3,
+      "search_aliases": [
+        "K_Node2_f3",
+        "K Node2 f3"
+      ]
+    },
+    "K317": {
+      "x": 407,
+      "y": 675,
+      "floor": 3,
+      "search_aliases": [
+        "K317",
+        "Room K317",
+        "Auditorium K317",
+        "Aud. K317",
+        "Class K317"
+      ]
+    },
+    "K316": {
+      "x": 407,
+      "y": 657,
+      "floor": 3,
+      "search_aliases": [
+        "K316",
+        "Room K316",
+        "Auditorium K316",
+        "Aud. K316",
+        "Class K316"
+      ]
+    },
+    "K318": {
+      "x": 407,
+      "y": 639,
+      "floor": 3,
+      "search_aliases": [
+        "K318",
+        "Room K318",
+        "Auditorium K318",
+        "Aud. K318",
+        "Class K318"
+      ]
+    },
+    "K315": {
+      "x": 407,
+      "y": 632,
+      "floor": 3,
+      "search_aliases": [
+        "K315",
+        "Room K315",
+        "Auditorium K315",
+        "Aud. K315",
+        "Class K315"
+      ]
+    },
+    "K314": {
+      "x": 407,
+      "y": 613,
+      "floor": 3,
+      "search_aliases": [
+        "K314",
+        "Room K314",
+        "Auditorium K314",
+        "Aud. K314",
+        "Class K314"
+      ]
+    },
+    "K319": {
+      "x": 407,
+      "y": 602,
+      "floor": 3,
+      "search_aliases": [
+        "K319",
+        "Room K319",
+        "Auditorium K319",
+        "Aud. K319",
+        "Class K319"
+      ]
+    },
+    "K313": {
+      "x": 407,
+      "y": 597,
+      "floor": 3,
+      "search_aliases": [
+        "K313",
+        "Room K313",
+        "Auditorium K313",
+        "Aud. K313",
+        "Class K313"
+      ]
+    },
+    "K312": {
+      "x": 407,
+      "y": 584,
+      "floor": 3,
+      "search_aliases": [
+        "K312",
+        "Room K312",
+        "Auditorium K312",
+        "Aud. K312",
+        "Class K312"
+      ]
+    },
+    "K_Node1_f3": {
+      "x": 407,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "K_Node1_f3",
+        "K Node1 f3"
+      ]
+    },
+    "stairs_K_west_f3": {
+      "x": 390,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_K_west_f3",
+        "stairs K west f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "J302": {
+      "x": 330,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "J302",
+        "Room J302",
+        "Auditorium J302",
+        "Aud. J302",
+        "Class J302"
+      ]
+    },
+    "J301": {
+      "x": 319,
+      "y": 553,
+      "floor": 3,
+      "search_aliases": [
+        "J301",
+        "Room J301",
+        "Auditorium J301",
+        "Aud. J301",
+        "Class J301"
+      ]
+    },
+    "J_Node1_f3": {
+      "x": 319,
+      "y": 651,
+      "floor": 3,
+      "search_aliases": [
+        "J_Node1_f3",
+        "J Node1 f3"
+      ]
+    },
+    "J308": {
+      "x": 297,
+      "y": 659,
+      "floor": 3,
+      "search_aliases": [
+        "J308",
+        "Room J308",
+        "Auditorium J308",
+        "Aud. J308",
+        "Class J308"
+      ]
+    },
+    "J303": {
+      "x": 330,
+      "y": 660,
+      "floor": 3,
+      "search_aliases": [
+        "J303",
+        "Room J303",
+        "Auditorium J303",
+        "Aud. J303",
+        "Class J303"
+      ]
+    },
+    "J305": {
+      "x": 330,
+      "y": 683,
+      "floor": 3,
+      "search_aliases": [
+        "J305",
+        "Room J305",
+        "Auditorium J305",
+        "Aud. J305",
+        "Class J305"
+      ]
+    },
+    "J307": {
+      "x": 330,
+      "y": 686,
+      "floor": 3,
+      "search_aliases": [
+        "J307",
+        "Room J307",
+        "Auditorium J307",
+        "Aud. J307",
+        "Class J307"
+      ]
+    },
+    "J304": {
+      "x": 344,
+      "y": 672,
+      "floor": 3,
+      "search_aliases": [
+        "J304",
+        "Room J304",
+        "Auditorium J304",
+        "Aud. J304",
+        "Class J304"
+      ]
+    },
+    "stairs_D_west_stairs_D_north_f3": {
+      "x": 173,
+      "y": 395,
+      "floor": 3,
+      "search_aliases": [
+        "stairs_D_west_stairs_D_north_f3",
+        "stairs D west stairs D north f3",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "E305_E306": {
+      "x": 202,
+      "y": 224,
+      "floor": 3,
+      "search_aliases": [
+        "E305_E306",
+        "E305 E306",
+        "E305",
+        "Room E305",
+        "Auditorium E305",
+        "Aud. E305",
+        "Class E305",
+        "E306",
+        "Room E306",
+        "Auditorium E306",
+        "Aud. E306",
+        "Class E306"
+      ]
+    },
+    "entrance_F_out_entrance_F_in_f3": {
+      "x": 346,
+      "y": 169,
+      "floor": 3,
+      "search_aliases": [
+        "entrance_F_out_entrance_F_in_f3",
+        "entrance F out entrance F in f3",
+        "Entrance",
+        "Exit",
+        "Main Gate"
+      ]
+    },
+    "G303_Auditorium_hall": {
+      "x": 443,
+      "y": 188,
+      "floor": 3,
+      "search_aliases": [
+        "G303_Auditorium_hall",
+        "G303 Auditorium hall",
+        "G303",
+        "Room G303",
+        "Auditorium G303",
+        "Aud. G303",
+        "Class G303"
+      ]
+    },
+    "Decanate_J306_stairs_J_central_f3": {
+      "x": 330,
+      "y": 692,
+      "floor": 3,
+      "search_aliases": [
+        "Decanate_J306_stairs_J_central_f3",
+        "Decanate J306 stairs J central f3",
+        "J306",
+        "Room J306",
+        "Auditorium J306",
+        "Aud. J306",
+        "Class J306",
+        "Dean Office",
+        "Deanery",
+        "Dean",
+        "Stairs",
+        "Staircase",
+        "Steps"
+      ]
+    },
+    "entrance_J_out_wandrobe_f3": {
+      "x": 319,
+      "y": 617,
+      "floor": 3,
+      "search_aliases": [
+        "entrance_J_out_wandrobe_f3",
+        "entrance J out wandrobe f3",
+        "Entrance",
+        "Exit",
+        "Main Gate"
+      ]
+    },
+    "Robotics_Lab_310": {
+      "x": 470,
+      "y": 610,
+      "floor": 3,
+      "search_aliases": [
+        "Robotics_Lab_310",
+        "Robotics Lab 310"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "stairs_D_south_f3",
+      "to": "D305"
+    },
+    {
+      "from": "D305",
+      "to": "D306"
+    },
+    {
+      "from": "D306",
+      "to": "D307"
+    },
+    {
+      "from": "D307",
+      "to": "D304"
+    },
+    {
+      "from": "D304",
+      "to": "D308"
+    },
+    {
+      "from": "D308",
+      "to": "D_Node1_f3"
+    },
+    {
+      "from": "D_Node1_f3",
+      "to": "D309"
+    },
+    {
+      "from": "D309",
+      "to": "D303_D310"
+    },
+    {
+      "from": "D303_D310",
+      "to": "D311"
+    },
+    {
+      "from": "D311",
+      "to": "D302"
+    },
+    {
+      "from": "D302",
+      "to": "D312_D301"
+    },
+    {
+      "from": "D312_D301",
+      "to": "D313_stairs_D_east_f3"
+    },
+    {
+      "from": "D313_stairs_D_east_f3",
+      "to": "D314"
+    },
+    {
+      "from": "D314",
+      "to": "D315"
+    },
+    {
+      "from": "D315",
+      "to": "WC_D_f3"
+    },
+    {
+      "from": "WC_D_f3",
+      "to": "D316"
+    },
+    {
+      "from": "D316",
+      "to": "stairs_D_west_stairs_D_north_f3"
+    },
+    {
+      "from": "stairs_D_west_stairs_D_north_f3",
+      "to": "D317"
+    },
+    {
+      "from": "D317",
+      "to": "E_Node1_f3"
+    },
+    {
+      "from": "E_Node1_f3",
+      "to": "E_Node2_f3"
+    },
+    {
+      "from": "E_Node2_f3",
+      "to": "E301"
+    },
+    {
+      "from": "E301",
+      "to": "E302"
+    },
+    {
+      "from": "E302",
+      "to": "stairs_E_east_f3"
+    },
+    {
+      "from": "stairs_E_east_f3",
+      "to": "E303"
+    },
+    {
+      "from": "E303",
+      "to": "E304"
+    },
+    {
+      "from": "E304",
+      "to": "Conference_Hall_303"
+    },
+    {
+      "from": "E304",
+      "to": "E305_E306"
+    },
+    {
+      "from": "E305_E306",
+      "to": "stairs_E_west_f3"
+    },
+    {
+      "from": "stairs_E_west_f3",
+      "to": "WC_E_f3"
+    },
+    {
+      "from": "WC_E_f3",
+      "to": "E_Node3_f3"
+    },
+    {
+      "from": "E_Node3_f3",
+      "to": "stairs_F_f3"
+    },
+    {
+      "from": "stairs_F_f3",
+      "to": "F_Node1_f3"
+    },
+    {
+      "from": "F_Node1_f3",
+      "to": "AI_Lab_302"
+    },
+    {
+      "from": "AI_Lab_302",
+      "to": "entrance_F_out_entrance_F_in_f3"
+    },
+    {
+      "from": "entrance_F_out_entrance_F_in_f3",
+      "to": "stairs_G_west_f3"
+    },
+    {
+      "from": "stairs_G_west_f3",
+      "to": "G_Node1_f3"
+    },
+    {
+      "from": "G_Node1_f3",
+      "to": "G301"
+    },
+    {
+      "from": "G301",
+      "to": "G303_Auditorium_hall"
+    },
+    {
+      "from": "G303_Auditorium_hall",
+      "to": "stairs_G_central_f3"
+    },
+    {
+      "from": "stairs_G_central_f3",
+      "to": "G302"
+    },
+    {
+      "from": "G302",
+      "to": "WC_G_f3"
+    },
+    {
+      "from": "WC_G_f3",
+      "to": "stairs_H_north_f3"
+    },
+    {
+      "from": "stairs_H_north_f3",
+      "to": "Rectorate_301"
+    },
+    {
+      "from": "Rectorate_301",
+      "to": "entrance_H_in_f3"
+    },
+    {
+      "from": "entrance_H_in_f3",
+      "to": "stairs_H_south_f3"
+    },
+    {
+      "from": "stairs_H_south_f3",
+      "to": "stairs_I_east_f3"
+    },
+    {
+      "from": "stairs_I_east_f3",
+      "to": "stairs_I_west_f3"
+    },
+    {
+      "from": "stairs_I_west_f3",
+      "to": "I305"
+    },
+    {
+      "from": "I305",
+      "to": "WC_I_f3"
+    },
+    {
+      "from": "WC_I_f3",
+      "to": "I304"
+    },
+    {
+      "from": "I304",
+      "to": "I303"
+    },
+    {
+      "from": "I303",
+      "to": "I301"
+    },
+    {
+      "from": "I301",
+      "to": "I302"
+    },
+    {
+      "from": "I302",
+      "to": "I_Node2_f3"
+    },
+    {
+      "from": "I_Node2_f3",
+      "to": "I_Node1_f3"
+    },
+    {
+      "from": "I_Node1_f3",
+      "to": "WC_K_f3"
+    },
+    {
+      "from": "WC_K_f3",
+      "to": "K_Node4_f3"
+    },
+    {
+      "from": "K_Node4_f3",
+      "to": "stairs_K_east_f3"
+    },
+    {
+      "from": "stairs_K_east_f3",
+      "to": "K301"
+    },
+    {
+      "from": "K301",
+      "to": "K302"
+    },
+    {
+      "from": "K302",
+      "to": "K303"
+    },
+    {
+      "from": "K303",
+      "to": "K311"
+    },
+    {
+      "from": "K311",
+      "to": "K309"
+    },
+    {
+      "from": "K309",
+      "to": "K304"
+    },
+    {
+      "from": "K304",
+      "to": "K305"
+    },
+    {
+      "from": "K304",
+      "to": "K306"
+    },
+    {
+      "from": "K306",
+      "to": "stairs_K_south_f3"
+    },
+    {
+      "from": "stairs_K_south_f3",
+      "to": "K307"
+    },
+    {
+      "from": "K307",
+      "to": "K_Node3_f3"
+    },
+    {
+      "from": "K_Node3_f3",
+      "to": "K308"
+    },
+    {
+      "from": "K308",
+      "to": "K_Node2_f3"
+    },
+    {
+      "from": "K_Node2_f3",
+      "to": "K317"
+    },
+    {
+      "from": "K317",
+      "to": "K316"
+    },
+    {
+      "from": "K316",
+      "to": "K318"
+    },
+    {
+      "from": "K318",
+      "to": "K315"
+    },
+    {
+      "from": "K315",
+      "to": "K314"
+    },
+    {
+      "from": "K314",
+      "to": "K319"
+    },
+    {
+      "from": "K319",
+      "to": "K313"
+    },
+    {
+      "from": "K313",
+      "to": "K312"
+    },
+    {
+      "from": "K312",
+      "to": "K_Node1_f3"
+    },
+    {
+      "from": "K_Node1_f3",
+      "to": "K_Node4_f3"
+    },
+    {
+      "from": "K_Node1_f3",
+      "to": "stairs_K_west_f3"
+    },
+    {
+      "from": "stairs_K_west_f3",
+      "to": "J302"
+    },
+    {
+      "from": "J302",
+      "to": "J301"
+    },
+    {
+      "from": "J301",
+      "to": "entrance_J_out_wandrobe_f3"
+    },
+    {
+      "from": "entrance_J_out_wandrobe_f3",
+      "to": "J308"
+    },
+    {
+      "from": "J308",
+      "to": "J_Node1_f3"
+    },
+    {
+      "from": "J_Node1_f3",
+      "to": "J303"
+    },
+    {
+      "from": "J303",
+      "to": "J305"
+    },
+    {
+      "from": "J303",
+      "to": "J304"
+    },
+    {
+      "from": "J304",
+      "to": "K_Node2_f3"
+    },
+    {
+      "from": "J305",
+      "to": "J307"
+    },
+    {
+      "from": "J307",
+      "to": "Decanate_J306_stairs_J_central_f3"
+    }
+  ]
+}

@@ -1,0 +1,843 @@
+{
+    "nodes": {
+        "stairs_D_south": {
+            "x": 172,
+            "y": 527,
+            "floor": 1
+        },
+        "D105": {
+            "x": 170,
+            "y": 521,
+            "floor": 1
+        },
+        "D106": {
+            "x": 168,
+            "y": 516,
+            "floor": 1
+        },
+        "D107": {
+            "x": 165,
+            "y": 505,
+            "floor": 1
+        },
+        "D104": {
+            "x": 163,
+            "y": 499,
+            "floor": 1
+        },
+        "D108": {
+            "x": 161,
+            "y": 493,
+            "floor": 1
+        },
+        "D_Node1": {
+            "x": 160,
+            "y": 490,
+            "floor": 1
+        },
+        "D109": {
+            "x": 161,
+            "y": 482,
+            "floor": 1
+        },
+        "D103_D110": {
+            "x": 162,
+            "y": 476,
+            "floor": 1
+        },
+        "D111": {
+            "x": 163,
+            "y": 470,
+            "floor": 1
+        },
+        "D102": {
+            "x": 164,
+            "y": 460,
+            "floor": 1
+        },
+        "D112_D101": {
+            "x": 165,
+            "y": 451,
+            "floor": 1
+        },
+        "D113_stairs_D_east": {
+            "x": 166,
+            "y": 446,
+            "floor": 1
+        },
+        "D114": {
+            "x": 167,
+            "y": 435,
+            "floor": 1
+        },
+        "D115": {
+            "x": 169,
+            "y": 418,
+            "floor": 1
+        },
+        "WC_D": {
+            "x": 169,
+            "y": 415,
+            "floor": 1
+        },
+        "D116": {
+            "x": 170,
+            "y": 407,
+            "floor": 1
+        },
+        "D117": {
+            "x": 165,
+            "y": 384,
+            "floor": 1
+        },
+        "E_Node1": {
+            "x": 165,
+            "y": 363,
+            "floor": 1
+        },
+        "E_Node2": {
+            "x": 202,
+            "y": 363,
+            "floor": 1
+        },
+        "E101": {
+            "x": 202,
+            "y": 342,
+            "floor": 1
+        },
+        "E102": {
+            "x": 202,
+            "y": 314,
+            "floor": 1
+        },
+        "stairs_E_east": {
+            "x": 202,
+            "y": 297,
+            "floor": 1
+        },
+        "E103": {
+            "x": 202,
+            "y": 283,
+            "floor": 1
+        },
+        "E104": {
+            "x": 202,
+            "y": 259,
+            "floor": 1
+        },
+        "Medical, E107, E108": {
+            "x": 202,
+            "y": 257,
+            "floor": 1
+        },
+        "stairs_E_west": {
+            "x": 207,
+            "y": 217,
+            "floor": 1
+        },
+        "WC_E": {
+            "x": 210,
+            "y": 214,
+            "floor": 1
+        },
+        "E_Node3": {
+            "x": 223,
+            "y": 195,
+            "floor": 1
+        },
+        "stairs_F": {
+            "x": 241,
+            "y": 195,
+            "floor": 1
+        },
+        "F_Node1": {
+            "x": 255,
+            "y": 195,
+            "floor": 1
+        },
+        "Scool21": {
+            "x": 254,
+            "y": 169,
+            "floor": 1
+        },
+        "stairs_G_west": {
+            "x": 395,
+            "y": 169,
+            "floor": 1
+        },
+        "G_Node1": {
+            "x": 425,
+            "y": 169,
+            "floor": 1
+        },
+        "G101": {
+            "x": 431,
+            "y": 177,
+            "floor": 1
+        },
+        "stairs_G_central": {
+            "x": 451,
+            "y": 196,
+            "floor": 1
+        },
+        "G102": {
+            "x": 475,
+            "y": 220,
+            "floor": 1
+        },
+        "WC_G": {
+            "x": 499,
+            "y": 244,
+            "floor": 1
+        },
+        "stairs_H_north": {
+            "x": 517,
+            "y": 262,
+            "floor": 1
+        },
+        "Caffe": {
+            "x": 517,
+            "y": 320,
+            "floor": 1
+        },
+        "entrance_H_in": {
+            "x": 517,
+            "y": 331,
+            "floor": 1
+        },
+        "stairs_H_south": {
+            "x": 517,
+            "y": 381,
+            "floor": 1
+        },
+        "stairs_I_east": {
+            "x": 477,
+            "y": 381,
+            "floor": 1
+        },
+        "stairs_I_west": {
+            "x": 440,
+            "y": 381,
+            "floor": 1
+        },
+        "I105": {
+            "x": 440,
+            "y": 403,
+            "floor": 1
+        },
+        "WC_I": {
+            "x": 440,
+            "y": 406,
+            "floor": 1
+        },
+        "I104": {
+            "x": 440,
+            "y": 415,
+            "floor": 1
+        },
+        "I103": {
+            "x": 440,
+            "y": 457,
+            "floor": 1
+        },
+        "I101": {
+            "x": 440,
+            "y": 468,
+            "floor": 1
+        },
+        "I102": {
+            "x": 440,
+            "y": 506,
+            "floor": 1
+        },
+        "I_Node2": {
+            "x": 440,
+            "y": 515,
+            "floor": 1
+        },
+        "I_Node1": {
+            "x": 418,
+            "y": 515,
+            "floor": 1
+        },
+        "WC_K": {
+            "x": 418,
+            "y": 533,
+            "floor": 1
+        },
+        "K_Node4": {
+            "x": 418,
+            "y": 553,
+            "floor": 1
+        },
+        "stairs_K_east": {
+            "x": 470,
+            "y": 553,
+            "floor": 1
+        },
+        "K101": {
+            "x": 470,
+            "y": 567,
+            "floor": 1
+        },
+        "K102": {
+            "x": 470,
+            "y": 574,
+            "floor": 1
+        },
+        "K103": {
+            "x": 470,
+            "y": 585,
+            "floor": 1
+        },
+        "K111": {
+            "x": 470,
+            "y": 598,
+            "floor": 1
+        },
+        "K109": {
+            "x": 470,
+            "y": 631,
+            "floor": 1
+        },
+        "K104": {
+            "x": 470,
+            "y": 665,
+            "floor": 1
+        },
+        "K105": {
+            "x": 470,
+            "y": 668,
+            "floor": 1
+        },
+        "K106": {
+            "x": 470,
+            "y": 672,
+            "floor": 1
+        },
+        "stairs_K_south": {
+            "x": 470,
+            "y": 676,
+            "floor": 1
+        },
+        "K107": {
+            "x": 466,
+            "y": 672,
+            "floor": 1
+        },
+        "K_Node3": {
+            "x": 446,
+            "y": 651,
+            "floor": 1
+        },
+        "K108": {
+            "x": 442,
+            "y": 655,
+            "floor": 1
+        },
+        "K_Node2": {
+            "x": 407,
+            "y": 683,
+            "floor": 1
+        },
+        "K117": {
+            "x": 407,
+            "y": 675,
+            "floor": 1
+        },
+        "K116": {
+            "x": 407,
+            "y": 657,
+            "floor": 1
+        },
+        "K118": {
+            "x": 407,
+            "y": 639,
+            "floor": 1
+        },
+        "K115": {
+            "x": 407,
+            "y": 632,
+            "floor": 1
+        },
+        "K114": {
+            "x": 407,
+            "y": 613,
+            "floor": 1
+        },
+        "K119": {
+            "x": 407,
+            "y": 602,
+            "floor": 1
+        },
+        "K113": {
+            "x": 407,
+            "y": 597,
+            "floor": 1
+        },
+        "K112": {
+            "x": 407,
+            "y": 584,
+            "floor": 1
+        },
+        "K_Node1": {
+            "x": 407,
+            "y": 553,
+            "floor": 1
+        },
+        "stairs_K_west": {
+            "x": 390,
+            "y": 553,
+            "floor": 1
+        },
+        "J102": {
+            "x": 330,
+            "y": 553,
+            "floor": 1
+        },
+        "J101": {
+            "x": 319,
+            "y": 553,
+            "floor": 1
+        },
+        "J_Node1": {
+            "x": 319,
+            "y": 651,
+            "floor": 1
+        },
+        "J108": {
+            "x": 297,
+            "y": 659,
+            "floor": 1
+        },
+        "J103": {
+            "x": 330,
+            "y": 660,
+            "floor": 1
+        },
+        "J105": {
+            "x": 330,
+            "y": 683,
+            "floor": 1
+        },
+        "J107": {
+            "x": 330,
+            "y": 686,
+            "floor": 1
+        },
+        "J104": {
+            "x": 344,
+            "y": 672,
+            "floor": 1
+        },
+        "stairs_D_west_stairs_D_north": {
+            "x": 173,
+            "y": 395,
+            "floor": 1
+        },
+        "E105_E106": {
+            "x": 202,
+            "y": 224,
+            "floor": 1
+        },
+        "entrance_F_out_entrance_F_in": {
+            "x": 346,
+            "y": 169,
+            "floor": 1
+        },
+        "G103_Auditorium_hall": {
+            "x": 443,
+            "y": 188,
+            "floor": 1
+        },
+        "Decanate_J106_stairs_J_central": {
+            "x": 330,
+            "y": 692,
+            "floor": 1
+        },
+        "entrance_J_out_wandrobe": {
+            "x": 319,
+            "y": 617,
+            "floor": 1
+        },
+        "Coworks_K110": {
+            "x": 470,
+            "y": 610,
+            "floor": 1
+        }
+    },
+    "edges": [
+        {
+            "from": "stairs_D_south",
+            "to": "D105"
+        },
+        {
+            "from": "D105",
+            "to": "D106"
+        },
+        {
+            "from": "D106",
+            "to": "D107"
+        },
+        {
+            "from": "D107",
+            "to": "D104"
+        },
+        {
+            "from": "D104",
+            "to": "D108"
+        },
+        {
+            "from": "D108",
+            "to": "D_Node1"
+        },
+        {
+            "from": "D_Node1",
+            "to": "D109"
+        },
+        {
+            "from": "D109",
+            "to": "D103_D110"
+        },
+        {
+            "from": "D103_D110",
+            "to": "D111"
+        },
+        {
+            "from": "D111",
+            "to": "D102"
+        },
+        {
+            "from": "D102",
+            "to": "D112_D101"
+        },
+        {
+            "from": "D112_D101",
+            "to": "D113_stairs_D_east"
+        },
+        {
+            "from": "D113_stairs_D_east",
+            "to": "D114"
+        },
+        {
+            "from": "D114",
+            "to": "D115"
+        },
+        {
+            "from": "D115",
+            "to": "WC_D"
+        },
+        {
+            "from": "WC_D",
+            "to": "D116"
+        },
+        {
+            "from": "D116",
+            "to": "stairs_D_west_stairs_D_north"
+        },
+        {
+            "from": "stairs_D_west_stairs_D_north",
+            "to": "D117"
+        },
+        {
+            "from": "D117",
+            "to": "E_Node1"
+        },
+        {
+            "from": "E_Node1",
+            "to": "E_Node2"
+        },
+        {
+            "from": "E_Node2",
+            "to": "E101"
+        },
+        {
+            "from": "E101",
+            "to": "E102"
+        },
+        {
+            "from": "E102",
+            "to": "stairs_E_east"
+        },
+        {
+            "from": "stairs_E_east",
+            "to": "E103"
+        },
+        {
+            "from": "E103",
+            "to": "E104"
+        },
+        {
+            "from": "E104",
+            "to": "Medical, E107, E108"
+        },
+        {
+            "from": "E104",
+            "to": "E105_E106"
+        },
+        {
+            "from": "E105_E106",
+            "to": "stairs_E_west"
+        },
+        {
+            "from": "stairs_E_west",
+            "to": "WC_E"
+        },
+        {
+            "from": "WC_E",
+            "to": "E_Node3"
+        },
+        {
+            "from": "E_Node3",
+            "to": "stairs_F"
+        },
+        {
+            "from": "stairs_F",
+            "to": "F_Node1"
+        },
+        {
+            "from": "F_Node1",
+            "to": "Scool21"
+        },
+        {
+            "from": "Scool21",
+            "to": "entrance_F_out_entrance_F_in"
+        },
+        {
+            "from": "entrance_F_out_entrance_F_in",
+            "to": "stairs_G_west"
+        },
+        {
+            "from": "stairs_G_west",
+            "to": "G_Node1"
+        },
+        {
+            "from": "G_Node1",
+            "to": "G101"
+        },
+        {
+            "from": "G101",
+            "to": "G103_Auditorium_hall"
+        },
+        {
+            "from": "G103_Auditorium_hall",
+            "to": "stairs_G_central"
+        },
+        {
+            "from": "stairs_G_central",
+            "to": "G102"
+        },
+        {
+            "from": "G102",
+            "to": "WC_G"
+        },
+        {
+            "from": "WC_G",
+            "to": "stairs_H_north"
+        },
+        {
+            "from": "stairs_H_north",
+            "to": "Caffe"
+        },
+        {
+            "from": "Caffe",
+            "to": "entrance_H_in"
+        },
+        {
+            "from": "entrance_H_in",
+            "to": "stairs_H_south"
+        },
+        {
+            "from": "stairs_H_south",
+            "to": "stairs_I_east"
+        },
+        {
+            "from": "stairs_I_east",
+            "to": "stairs_I_west"
+        },
+        {
+            "from": "stairs_I_west",
+            "to": "I105"
+        },
+        {
+            "from": "I105",
+            "to": "WC_I"
+        },
+        {
+            "from": "WC_I",
+            "to": "I104"
+        },
+        {
+            "from": "I104",
+            "to": "I103"
+        },
+        {
+            "from": "I103",
+            "to": "I101"
+        },
+        {
+            "from": "I101",
+            "to": "I102"
+        },
+        {
+            "from": "I102",
+            "to": "I_Node2"
+        },
+        {
+            "from": "I_Node2",
+            "to": "I_Node1"
+        },
+        {
+            "from": "I_Node1",
+            "to": "WC_K"
+        },
+        {
+            "from": "WC_K",
+            "to": "K_Node4"
+        },
+        {
+            "from": "K_Node4",
+            "to": "stairs_K_east"
+        },
+        {
+            "from": "stairs_K_east",
+            "to": "K101"
+        },
+        {
+            "from": "K101",
+            "to": "K102"
+        },
+        {
+            "from": "K102",
+            "to": "K103"
+        },
+        {
+            "from": "K103",
+            "to": "K111"
+        },
+        {
+            "from": "K111",
+            "to": "K109"
+        },
+        {
+            "from": "K109",
+            "to": "K104"
+        },
+        {
+            "from": "K104",
+            "to": "K105"
+        },
+        {
+            "from": "K104",
+            "to": "K106"
+        },
+        {
+            "from": "K106",
+            "to": "stairs_K_south"
+        },
+        {
+            "from": "stairs_K_south",
+            "to": "K107"
+        },
+        {
+            "from": "K107",
+            "to": "K_Node3"
+        },
+        {
+            "from": "K_Node3",
+            "to": "K108"
+        },
+        {
+            "from": "K108",
+            "to": "K_Node2"
+        },
+        {
+            "from": "K_Node2",
+            "to": "K117"
+        },
+        {
+            "from": "K117",
+            "to": "K116"
+        },
+        {
+            "from": "K116",
+            "to": "K118"
+        },
+        {
+            "from": "K118",
+            "to": "K115"
+        },
+        {
+            "from": "K115",
+            "to": "K114"
+        },
+        {
+            "from": "K114",
+            "to": "K119"
+        },
+        {
+            "from": "K119",
+            "to": "K113"
+        },
+        {
+            "from": "K113",
+            "to": "K112"
+        },
+        {
+            "from": "K112",
+            "to": "K_Node1"
+        },
+        {
+            "from": "K_Node1",
+            "to": "K_Node4"
+        },
+        {
+            "from": "K_Node1",
+            "to": "stairs_K_west"
+        },
+        {
+            "from": "stairs_K_west",
+            "to": "J102"
+        },
+        {
+            "from": "J102",
+            "to": "J101"
+        },
+        {
+            "from": "J101",
+            "to": "entrance_J_out_wandrobe"
+        },
+        {
+            "from": "entrance_J_out_wandrobe",
+            "to": "J108"
+        },
+        {
+            "from": "J108",
+            "to": "J_Node1"
+        },
+        {
+            "from": "J_Node1",
+            "to": "J103"
+        },
+        {
+            "from": "J103",
+            "to": "J105"
+        },
+        {
+            "from": "J103",
+            "to": "J104"
+        },
+        {
+            "from": "J104",
+            "to": "K_Node2"
+        },
+        {
+            "from": "J105",
+            "to": "J107"
+        },
+        {
+            "from": "J107",
+            "to": "Decanate_J106_stairs_J_central"
+        }
+    ]
+}
