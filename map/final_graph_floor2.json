@@ -1,0 +1,690 @@
+{
+    "nodes": {
+        "stairs_K_south_K108": {
+            "x": 467,
+            "y": 689,
+            "floor": 2
+        },
+        "K207": {
+            "x": 483,
+            "y": 689,
+            "floor": 2
+        },
+        "K206": {
+            "x": 497,
+            "y": 673,
+            "floor": 2
+        },
+        "K205": {
+            "x": 497,
+            "y": 655,
+            "floor": 2
+        },
+        "K202_K203_K204": {
+            "x": 497,
+            "y": 572,
+            "floor": 2
+        },
+        "stairs_K_east": {
+            "x": 471,
+            "y": 538,
+            "floor": 2
+        },
+        "K212": {
+            "x": 453,
+            "y": 555,
+            "floor": 2
+        },
+        "K211": {
+            "x": 454,
+            "y": 574,
+            "floor": 2
+        },
+        "K210": {
+            "x": 454,
+            "y": 617,
+            "floor": 2
+        },
+        "K209": {
+            "x": 454,
+            "y": 641,
+            "floor": 2
+        },
+        "K201": {
+            "x": 446,
+            "y": 529,
+            "floor": 2
+        },
+        "I207": {
+            "x": 454,
+            "y": 509,
+            "floor": 2
+        },
+        "I206": {
+            "x": 454,
+            "y": 471,
+            "floor": 2
+        },
+        "I_Node1": {
+            "x": 454,
+            "y": 409,
+            "floor": 2
+        },
+        "WC_I": {
+            "x": 471,
+            "y": 409,
+            "floor": 2
+        },
+        "stairs_H_south": {
+            "x": 525,
+            "y": 408,
+            "floor": 2
+        },
+        "H205_H206": {
+            "x": 546,
+            "y": 356,
+            "floor": 2
+        },
+        "H204": {
+            "x": 546,
+            "y": 286,
+            "floor": 2
+        },
+        "stairs_H_north": {
+            "x": 523,
+            "y": 250,
+            "floor": 2
+        },
+        "WC_G": {
+            "x": 483,
+            "y": 216,
+            "floor": 2
+        },
+        "stairs_G_central": {
+            "x": 433,
+            "y": 173,
+            "floor": 2
+        },
+        "stairs_G_west": {
+            "x": 383,
+            "y": 173,
+            "floor": 2
+        },
+        "F209_F210": {
+            "x": 287,
+            "y": 173,
+            "floor": 2
+        },
+        "stairs_F_north_F207": {
+            "x": 287,
+            "y": 91,
+            "floor": 2
+        },
+        "F208": {
+            "x": 287,
+            "y": 120,
+            "floor": 2
+        },
+        "F206": {
+            "x": 270,
+            "y": 52,
+            "floor": 2
+        },
+        "F205": {
+            "x": 252,
+            "y": 52,
+            "floor": 2
+        },
+        "F204_F203": {
+            "x": 238,
+            "y": 78,
+            "floor": 2
+        },
+        "F202": {
+            "x": 238,
+            "y": 113,
+            "floor": 2
+        },
+        "F201": {
+            "x": 238,
+            "y": 146,
+            "floor": 2
+        },
+        "stairs_F": {
+            "x": 238,
+            "y": 195,
+            "floor": 2
+        },
+        "F211": {
+            "x": 271,
+            "y": 195,
+            "floor": 2
+        },
+        "stairs_E_west_E203": {
+            "x": 209,
+            "y": 212,
+            "floor": 2
+        },
+        "WC_E": {
+            "x": 229,
+            "y": 233,
+            "floor": 2
+        },
+        "E204": {
+            "x": 229,
+            "y": 276,
+            "floor": 2
+        },
+        "stairs_E_east": {
+            "x": 229,
+            "y": 294,
+            "floor": 2
+        },
+        "E205": {
+            "x": 229,
+            "y": 332,
+            "floor": 2
+        },
+        "E206": {
+            "x": 229,
+            "y": 342,
+            "floor": 2
+        },
+        "E207": {
+            "x": 208,
+            "y": 388,
+            "floor": 2
+        },
+        "stairs_D_north": {
+            "x": 186,
+            "y": 388,
+            "floor": 2
+        },
+        "WC_D": {
+            "x": 187,
+            "y": 416,
+            "floor": 2
+        },
+        "stairs_D_east": {
+            "x": 187,
+            "y": 433,
+            "floor": 2
+        },
+        "D201": {
+            "x": 187,
+            "y": 446,
+            "floor": 2
+        },
+        "D202": {
+            "x": 187,
+            "y": 476,
+            "floor": 2
+        },
+        "D203": {
+            "x": 187,
+            "y": 498,
+            "floor": 2
+        },
+        "stairs_D_south": {
+            "x": 186,
+            "y": 523,
+            "floor": 2
+        },
+        "D204": {
+            "x": 160,
+            "y": 523,
+            "floor": 2
+        },
+        "D205": {
+            "x": 141,
+            "y": 451,
+            "floor": 2
+        },
+        "stairs_D_west_D206": {
+            "x": 161,
+            "y": 388,
+            "floor": 2
+        },
+        "J210_J211": {
+            "x": 306,
+            "y": 523,
+            "floor": 2
+        },
+        "J_Node1": {
+            "x": 322,
+            "y": 555,
+            "floor": 2
+        },
+        "J209": {
+            "x": 290,
+            "y": 555,
+            "floor": 2
+        },
+        "J208": {
+            "x": 279,
+            "y": 588,
+            "floor": 2
+        },
+        "J207": {
+            "x": 279,
+            "y": 619,
+            "floor": 2
+        },
+        "J206": {
+            "x": 279,
+            "y": 647,
+            "floor": 2
+        },
+        "J205": {
+            "x": 283,
+            "y": 669,
+            "floor": 2
+        },
+        "stairs_J_central": {
+            "x": 309,
+            "y": 675,
+            "floor": 2
+        },
+        "J204": {
+            "x": 322,
+            "y": 654,
+            "floor": 2
+        },
+        "J203": {
+            "x": 322,
+            "y": 638,
+            "floor": 2
+        },
+        "J202": {
+            "x": 322,
+            "y": 617,
+            "floor": 2
+        },
+        "J201": {
+            "x": 323,
+            "y": 573,
+            "floor": 2
+        },
+        "stairs_K_west": {
+            "x": 412,
+            "y": 555,
+            "floor": 2
+        },
+        "WC_K": {
+            "x": 412,
+            "y": 531,
+            "floor": 2
+        },
+        "I201": {
+            "x": 412,
+            "y": 457,
+            "floor": 2
+        },
+        "I202": {
+            "x": 412,
+            "y": 423,
+            "floor": 2
+        },
+        "stairs_I_west_I203_I204_I205": {
+            "x": 433,
+            "y": 383,
+            "floor": 2
+        },
+        "stairs_I_east": {
+            "x": 499,
+            "y": 383,
+            "floor": 2
+        },
+        "H201": {
+            "x": 499,
+            "y": 351,
+            "floor": 2
+        },
+        "H202": {
+            "x": 499,
+            "y": 311,
+            "floor": 2
+        },
+        "H203": {
+            "x": 499,
+            "y": 300,
+            "floor": 2
+        },
+        "E202": {
+            "x": 186,
+            "y": 297,
+            "floor": 2
+        },
+        "E_Node1": {
+            "x": 184,
+            "y": 347,
+            "floor": 2
+        }
+    },
+    "edges": [
+        {
+            "from": "F204_F203",
+            "to": "F205"
+        },
+        {
+            "from": "F205",
+            "to": "F206"
+        },
+        {
+            "from": "F206",
+            "to": "stairs_F_north_F207"
+        },
+        {
+            "from": "stairs_F_north_F207",
+            "to": "F208"
+        },
+        {
+            "from": "F204_F203",
+            "to": "F202"
+        },
+        {
+            "from": "F202",
+            "to": "F201"
+        },
+        {
+            "from": "F201",
+            "to": "stairs_F"
+        },
+        {
+            "from": "stairs_F",
+            "to": "F211"
+        },
+        {
+            "from": "F211",
+            "to": "F209_F210"
+        },
+        {
+            "from": "F209_F210",
+            "to": "F208"
+        },
+        {
+            "from": "F209_F210",
+            "to": "stairs_G_west"
+        },
+        {
+            "from": "stairs_G_west",
+            "to": "stairs_G_central"
+        },
+        {
+            "from": "stairs_F",
+            "to": "stairs_E_west_E203"
+        },
+        {
+            "from": "stairs_E_west_E203",
+            "to": "WC_E"
+        },
+        {
+            "from": "WC_E",
+            "to": "E204"
+        },
+        {
+            "from": "E204",
+            "to": "stairs_E_east"
+        },
+        {
+            "from": "stairs_E_east",
+            "to": "E205"
+        },
+        {
+            "from": "E205",
+            "to": "E206"
+        },
+        {
+            "from": "stairs_E_west_E203",
+            "to": "E202"
+        },
+        {
+            "from": "E202",
+            "to": "E_Node1"
+        },
+        {
+            "from": "E206",
+            "to": "E207"
+        },
+        {
+            "from": "E207",
+            "to": "stairs_D_north"
+        },
+        {
+            "from": "stairs_D_north",
+            "to": "stairs_D_west_D206"
+        },
+        {
+            "from": "stairs_D_west_D206",
+            "to": "E_Node1"
+        },
+        {
+            "from": "stairs_D_north",
+            "to": "WC_D"
+        },
+        {
+            "from": "WC_D",
+            "to": "stairs_D_east"
+        },
+        {
+            "from": "stairs_D_east",
+            "to": "D201"
+        },
+        {
+            "from": "D201",
+            "to": "D202"
+        },
+        {
+            "from": "D202",
+            "to": "D203"
+        },
+        {
+            "from": "D203",
+            "to": "stairs_D_south"
+        },
+        {
+            "from": "stairs_D_south",
+            "to": "D204"
+        },
+        {
+            "from": "D204",
+            "to": "D205"
+        },
+        {
+            "from": "D205",
+            "to": "stairs_D_west_D206"
+        },
+        {
+            "from": "stairs_D_south",
+            "to": "J210_J211"
+        },
+        {
+            "from": "J210_J211",
+            "to": "J209"
+        },
+        {
+            "from": "J209",
+            "to": "J208"
+        },
+        {
+            "from": "J208",
+            "to": "J207"
+        },
+        {
+            "from": "J207",
+            "to": "J206"
+        },
+        {
+            "from": "J206",
+            "to": "J205"
+        },
+        {
+            "from": "J205",
+            "to": "stairs_J_central"
+        },
+        {
+            "from": "stairs_J_central",
+            "to": "J204"
+        },
+        {
+            "from": "J204",
+            "to": "J203"
+        },
+        {
+            "from": "J203",
+            "to": "J202"
+        },
+        {
+            "from": "J202",
+            "to": "J201"
+        },
+        {
+            "from": "J201",
+            "to": "J_Node1"
+        },
+        {
+            "from": "J209",
+            "to": "J_Node1"
+        },
+        {
+            "from": "J_Node1",
+            "to": "J210_J211"
+        },
+        {
+            "from": "J_Node1",
+            "to": "stairs_K_west"
+        },
+        {
+            "from": "stairs_K_west",
+            "to": "WC_K"
+        },
+        {
+            "from": "stairs_K_west",
+            "to": "K212"
+        },
+        {
+            "from": "K212",
+            "to": "K211"
+        },
+        {
+            "from": "K211",
+            "to": "K210"
+        },
+        {
+            "from": "K210",
+            "to": "K209"
+        },
+        {
+            "from": "K209",
+            "to": "stairs_K_south_K108"
+        },
+        {
+            "from": "stairs_K_south_K108",
+            "to": "K207"
+        },
+        {
+            "from": "K207",
+            "to": "K206"
+        },
+        {
+            "from": "K206",
+            "to": "K205"
+        },
+        {
+            "from": "K205",
+            "to": "K202_K203_K204"
+        },
+        {
+            "from": "K202_K203_K204",
+            "to": "stairs_K_east"
+        },
+        {
+            "from": "K212",
+            "to": "K201"
+        },
+        {
+            "from": "K201",
+            "to": "stairs_K_east"
+        },
+        {
+            "from": "K201",
+            "to": "I207"
+        },
+        {
+            "from": "I207",
+            "to": "I206"
+        },
+        {
+            "from": "I206",
+            "to": "I_Node1"
+        },
+        {
+            "from": "WC_K",
+            "to": "I201"
+        },
+        {
+            "from": "I201",
+            "to": "I202"
+        },
+        {
+            "from": "I202",
+            "to": "stairs_I_west_I203_I204_I205"
+        },
+        {
+            "from": "stairs_I_west_I203_I204_I205",
+            "to": "stairs_I_east"
+        },
+        {
+            "from": "stairs_I_west_I203_I204_I205",
+            "to": "I_Node1"
+        },
+        {
+            "from": "I_Node1",
+            "to": "WC_I"
+        },
+        {
+            "from": "WC_I",
+            "to": "stairs_H_south"
+        },
+        {
+            "from": "stairs_H_south",
+            "to": "stairs_I_east"
+        },
+        {
+            "from": "stairs_I_east",
+            "to": "H201"
+        },
+        {
+            "from": "stairs_H_south",
+            "to": "H205_H206"
+        },
+        {
+            "from": "H205_H206",
+            "to": "H204"
+        },
+        {
+            "from": "H201",
+            "to": "H202"
+        },
+        {
+            "from": "H202",
+            "to": "H203"
+        },
+        {
+            "from": "H203",
+            "to": "stairs_H_north"
+        },
+        {
+            "from": "stairs_H_north",
+            "to": "H204"
+        },
+        {
+            "from": "stairs_H_north",
+            "to": "WC_G"
+        },
+        {
+            "from": "WC_G",
+            "to": "stairs_G_central"
+        }
+    ]
+}

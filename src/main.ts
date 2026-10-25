@@ -1,20 +1,9 @@
 import './style.css';
+import { FLOORS } from './data';
 import { GraphService } from './graph';
 import { MapRenderer } from './renderer';
 import { UIController } from './ui';
 import { NavigationPath, RouteSegment } from './types';
-
-const FLOOR_DATA_URLS = [
-  '/data/floor1.json',
-  '/data/floor2.json',
-  '/data/floor3.json'
-];
-
-const FLOOR_IMAGES: Record<number, string> = {
-  1: '/maps/floor1.png',
-  2: '/maps/floor2.png',
-  3: '/maps/floor3.png'
-};
 
 class AppController {
   private graph = new GraphService();
@@ -27,7 +16,7 @@ class AppController {
 
   public async init(): Promise<void> {
     try {
-      await this.graph.loadAndMergeGraphs(FLOOR_DATA_URLS);
+      this.graph.loadFloors(FLOORS);
 
       this.renderer = new MapRenderer('map-container');
       this.ui = new UIController(this.graph, {
@@ -119,11 +108,13 @@ class AppController {
    */
   private async showFloor(floor: number, segment: RouteSegment | null): Promise<void> {
     const requestId = ++this.floorRequestId;
+    const definition = FLOORS.find(item => item.floor === floor);
+    if (!definition) return;
 
     this.ui.setActiveFloorUI(floor);
 
     try {
-      await this.renderer.setFloorImage(FLOOR_IMAGES[floor], floor);
+      await this.renderer.setFloorImage(definition.imageUrl, floor);
     } catch (error) {
       console.error(error);
       return;
@@ -178,9 +169,9 @@ class AppController {
     overlay.innerHTML = `
       <div class="fatal-error">
         <div class="fatal-icon">⚠️</div>
-        <h2>Could not load the map</h2>
-        <p>${error instanceof Error ? error.message : 'Unknown error'}</p>
-        <button onclick="window.location.reload()" class="btn btn-secondary">Retry</button>
+        <h2>Не удалось загрузить карту</h2>
+        <p>${error instanceof Error ? error.message : 'Неизвестная ошибка'}</p>
+        <button onclick="window.location.reload()" class="btn btn-secondary">Повторить</button>
       </div>
     `;
   }

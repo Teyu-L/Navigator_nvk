@@ -1,12 +1,30 @@
 import { GraphNode, RouteSegment } from './types';
 
 /**
+ * Базовая система координат графов. JSON-файлы в map/ были размечены по
+ * растровым планам 750×750, поэтому все x/y в графах заданы именно в этих
+ * единицах, независимо от того, какого размера SVG сейчас на экране.
+ */
+const BASE_WIDTH = 750;
+const BASE_HEIGHT = 750;
+
+/** Пересчёт координат графа в текущие CSS-пиксели плана на экране. */
+interface RenderMetrics {
+  width: number;
+  height: number;
+  scaleX: number;
+  scaleY: number;
+  dpr: number;
+}
+
+/**
  * MapRenderer
  * -----------
  * Draws the route overlay on a canvas that is pixel-aligned with the floor
- * plan image. The image + canvas live inside a single "stage" element, which
- * is what gets scaled/panned, so path geometry always stays glued to the plan
- * no matter how the map is zoomed or what size the phone screen is.
+ * plan image. The image sits in a transformed "stage" (pan/zoom), while the
+ * canvas lives in screen space above it and is re-sized/re-drawn on every
+ * transform. This keeps the route glued to the plan at any display size and
+ * lets the SVG stay sharp when zoomed.
  */
 export class MapRenderer {
   private container: HTMLElement;
@@ -22,7 +40,6 @@ export class MapRenderer {
   private imageRequestId: number = 0;
 
   private scale: number = 1;      // current absolute scale
-  private fitScale: number = 1;   // scale that fits the stage into the viewport
   private minScale: number = 0.2;
   private maxScale: number = 6;
   private translateX: number = 0;
@@ -37,6 +54,14 @@ export class MapRenderer {
   private pinchStartDist: number = 0;
   private pinchStartScale: number = 1;
 
+  /** rAF-хэндл, чтобы не перерисовывать canvas несколько раз за кадр. */
+  private overlayFrame: number | null = null;
+
+  /** Resize/orientation должны пересчитать fit и слой canvas. */
+  private handleViewportResize = (): void => {
+    this.fitToContainer();
+  };
+
   constructor(containerId: string) {
     const container = document.getElementById(containerId);
     if (!container) throw new Error(`Container #${containerId} not found`);
@@ -47,14 +72,16 @@ export class MapRenderer {
 
     this.imgElement = document.createElement('img');
     this.imgElement.className = 'map-image';
-    this.imgElement.alt = 'Floor plan';
+    this.imgElement.alt = 'План этажа';
 
     this.canvas = document.createElement('canvas');
     this.canvas.className = 'map-canvas';
 
     this.stage.appendChild(this.imgElement);
-    this.stage.appendChild(this.canvas);
     this.container.appendChild(this.stage);
+    // Canvas — отдельный слой в screen-space над трансформируемым stage.
+    // Так его размер всегда равен реальному размеру SVG на экране.
+    this.container.appendChild(this.canvas);
 
     const ctx = this.canvas.getContext('2d');
     if (!ctx) throw new Error('Could not get Canvas 2D Context');
@@ -84,21 +111,19 @@ export class MapRenderer {
           return;
         }
 
-        const naturalW = this.imgElement.naturalWidth || 750;
-        const naturalH = this.imgElement.naturalHeight || 750;
+        const naturalW = this.imgElement.naturalWidth || BASE_WIDTH;
+        const naturalH = this.imgElement.naturalHeight || BASE_HEIGHT;
 
         this.stage.style.width = `${naturalW}px`;
         this.stage.style.height = `${naturalH}px`;
 
-        // 1 canvas pixel === 1 image pixel === 1 graph unit
-        this.canvas.width = naturalW;
-        this.canvas.height = naturalH;
-
+        // Размер canvas и масштаб координат считаются в redraw() по реальному
+        // getBoundingClientRect() SVG после применения fit/zoom/pan.
         this.fitToContainer();
         this.redraw();
         resolve();
       };
-      this.imgElement.onerror = () => reject(new Error(`Failed to load floor image: ${imageUrl}`));
+      this.imgElement.onerror = () => reject(new Error(`Не удалось загрузить изображение этажа: ${imageUrl}`));
       this.imgElement.src = imageUrl;
     });
   }
@@ -117,83 +142,159 @@ export class MapRenderer {
     this.redraw();
   }
 
-  public getActiveFloor(): number {
-    return this.currentFloor;
-  }
-
   /* ------------------------------------------------------------------ */
   /* Drawing                                                            */
   /* ------------------------------------------------------------------ */
 
   public redraw(): void {
+    const metrics = this.syncCanvasToImage();
+    if (!metrics) return;
+
+    // Backing store может быть в device-пикселях (retina), но рисуем мы в
+    // CSS-пикселях: dpr-трансформация переводит одно в другое.
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.setTransform(metrics.dpr, 0, 0, metrics.dpr, 0, 0);
 
     if (this.activePathSegment && this.activePathSegment.floor === this.currentFloor) {
-      this.drawPathLine(this.activePathSegment.nodes);
+      this.drawPath(this.activePathSegment.nodes, metrics);
     }
 
-    this.drawMarkers();
+    this.drawMarkers(metrics);
   }
 
-  private drawPathLine(nodes: GraphNode[]): void {
-    if (nodes.length < 2) return;
+  /**
+   * Подгоняет canvas под реальный размер SVG на экране (после resize,
+   * zoom и pan) и возвращает коэффициенты пересчёта координат графа.
+   * Координаты в JSON всегда остаются в системе BASE_WIDTH×BASE_HEIGHT.
+   */
+  private syncCanvasToImage(): RenderMetrics | null {
+    const imageRect = this.imgElement.getBoundingClientRect();
+    const containerRect = this.container.getBoundingClientRect();
+    const currentSvgWidth = imageRect.width;
+    const currentSvgHeight = imageRect.height;
+
+    if (!Number.isFinite(currentSvgWidth) || !Number.isFinite(currentSvgHeight) || currentSvgWidth < 1 || currentSvgHeight < 1) {
+      return null;
+    }
+
+    const scaleX = currentSvgWidth / BASE_WIDTH;
+    const scaleY = currentSvgHeight / BASE_HEIGHT;
+
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const backingWidth = Math.round(currentSvgWidth * dpr);
+    const backingHeight = Math.round(currentSvgHeight * dpr);
+
+    const left = `${imageRect.left - containerRect.left}px`;
+    const top = `${imageRect.top - containerRect.top}px`;
+    const cssWidth = `${currentSvgWidth}px`;
+    const cssHeight = `${currentSvgHeight}px`;
+
+    if (this.canvas.style.left !== left) this.canvas.style.left = left;
+    if (this.canvas.style.top !== top) this.canvas.style.top = top;
+    if (this.canvas.style.width !== cssWidth) this.canvas.style.width = cssWidth;
+    if (this.canvas.style.height !== cssHeight) this.canvas.style.height = cssHeight;
+
+    if (this.canvas.width !== backingWidth || this.canvas.height !== backingHeight) {
+      this.canvas.width = backingWidth;
+      this.canvas.height = backingHeight;
+    }
+
+    return {
+      width: currentSvgWidth,
+      height: currentSvgHeight,
+      scaleX,
+      scaleY,
+      dpr
+    };
+  }
+
+  /** Перерисовка не чаще одного раза за кадр (zoom/pan идут потоком). */
+  private scheduleOverlayRender(): void {
+    if (this.overlayFrame !== null) return;
+
+    this.overlayFrame = window.requestAnimationFrame(() => {
+      this.overlayFrame = null;
+      this.redraw();
+    });
+  }
+
+  public drawPath(nodes: GraphNode[], metrics?: RenderMetrics): void {
+    const activeMetrics = metrics || this.syncCanvasToImage();
+    if (!activeMetrics || nodes.length < 2) return;
+
+    const currentSvgWidth = activeMetrics.width;
+    const currentSvgHeight = activeMetrics.height;
+    const scaleX = currentSvgWidth / BASE_WIDTH;
+    const scaleY = currentSvgHeight / BASE_HEIGHT;
+    const unit = (scaleX + scaleY) / 2;
+
+    const points = nodes.map(node => {
+      const renderX = node.x * scaleX;
+      const renderY = node.y * scaleY;
+      return { x: renderX, y: renderY };
+    });
 
     this.ctx.save();
 
     // Soft glow behind the route
     this.ctx.shadowColor = 'rgba(37, 99, 235, 0.45)';
-    this.ctx.shadowBlur = 12;
+    this.ctx.shadowBlur = 12 * unit;
 
     // Outer casing keeps the line readable over dark plan lines
-    this.ctx.beginPath();
-    this.ctx.moveTo(nodes[0].x, nodes[0].y);
-    for (let i = 1; i < nodes.length; i++) {
-      this.ctx.lineTo(nodes[i].x, nodes[i].y);
-    }
-    this.ctx.strokeStyle = '#1D4ED8';
-    this.ctx.lineWidth = 10;
-    this.ctx.lineCap = 'round';
-    this.ctx.lineJoin = 'round';
-    this.ctx.stroke();
+    this.drawPolyline(points, '#1D4ED8', 10 * unit);
 
     // Bright inner line
-    this.ctx.beginPath();
-    this.ctx.moveTo(nodes[0].x, nodes[0].y);
-    for (let i = 1; i < nodes.length; i++) {
-      this.ctx.lineTo(nodes[i].x, nodes[i].y);
-    }
-    this.ctx.strokeStyle = '#3B82F6';
-    this.ctx.lineWidth = 6;
-    this.ctx.stroke();
+    this.drawPolyline(points, '#3B82F6', 6 * unit);
 
-    this.drawDirectionArrows(nodes);
+    this.drawDirectionArrows(nodes, activeMetrics, unit);
     this.ctx.restore();
   }
 
-  private drawDirectionArrows(nodes: GraphNode[]): void {
+  private drawPolyline(points: { x: number; y: number }[], color: string, lineWidth: number): void {
+    this.ctx.beginPath();
+    this.ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i++) {
+      this.ctx.lineTo(points[i].x, points[i].y);
+    }
+    this.ctx.strokeStyle = color;
+    this.ctx.lineWidth = lineWidth;
+    this.ctx.lineCap = 'round';
+    this.ctx.lineJoin = 'round';
+    this.ctx.stroke();
+  }
+
+  private drawDirectionArrows(nodes: GraphNode[], metrics: RenderMetrics, unit: number): void {
     this.ctx.fillStyle = '#FFFFFF';
+    const scaleX = metrics.scaleX;
+    const scaleY = metrics.scaleY;
 
     for (let i = 0; i < nodes.length - 1; i++) {
       const p1 = nodes[i];
       const p2 = nodes[i + 1];
-      const dx = p2.x - p1.x;
-      const dy = p2.y - p1.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const baseDx = p2.x - p1.x;
+      const baseDy = p2.y - p1.y;
 
-      if (dist < 34) continue;
+      // Порог задан в координатах графа, поэтому не зависит от масштаба экрана.
+      if (Math.hypot(baseDx, baseDy) < 34) continue;
 
-      const midX = (p1.x + p2.x) / 2;
-      const midY = (p1.y + p2.y) / 2;
+      const renderX1 = p1.x * scaleX;
+      const renderY1 = p1.y * scaleY;
+      const renderX2 = p2.x * scaleX;
+      const renderY2 = p2.y * scaleY;
+      const midX = (renderX1 + renderX2) / 2;
+      const midY = (renderY1 + renderY2) / 2;
+      const angle = Math.atan2(renderY2 - renderY1, renderX2 - renderX1);
 
       this.ctx.save();
       this.ctx.translate(midX, midY);
-      this.ctx.rotate(Math.atan2(dy, dx));
+      this.ctx.rotate(angle);
 
       this.ctx.beginPath();
-      this.ctx.moveTo(7, 0);
-      this.ctx.lineTo(-6, -5.5);
-      this.ctx.lineTo(-3, 0);
-      this.ctx.lineTo(-6, 5.5);
+      this.ctx.moveTo(7 * unit, 0);
+      this.ctx.lineTo(-6 * unit, -5.5 * unit);
+      this.ctx.lineTo(-3 * unit, 0);
+      this.ctx.lineTo(-6 * unit, 5.5 * unit);
       this.ctx.closePath();
       this.ctx.fill();
 
@@ -201,103 +302,158 @@ export class MapRenderer {
     }
   }
 
-  private drawMarkers(): void {
-    if (this.startNode && this.startNode.floor === this.currentFloor) {
-      this.drawPin(this.startNode.x, this.startNode.y, '#10B981', 'A', 'Start');
-    }
+  private drawMarkers(metrics: RenderMetrics): void {
+    const currentSvgWidth = metrics.width;
+    const currentSvgHeight = metrics.height;
+    const scaleX = currentSvgWidth / BASE_WIDTH;
+    const scaleY = currentSvgHeight / BASE_HEIGHT;
+    const unit = (scaleX + scaleY) / 2;
 
-    if (this.endNode && this.endNode.floor === this.currentFloor) {
-      this.drawPin(this.endNode.x, this.endNode.y, '#EF4444', 'B', 'Destination');
-    }
-
+    // Лестницу рисуем первой: если она стоит вплотную к A/B, маркеры старта
+    // и финиша должны оставаться сверху.
     const seg = this.activePathSegment;
     if (seg && seg.floor === this.currentFloor && seg.transitionToFloor !== undefined) {
       const stairNode = seg.endNode;
+      const renderX = stairNode.x * scaleX;
+      const renderY = stairNode.y * scaleY;
       const isUp = seg.transitionToFloor > this.currentFloor;
-      const label = `${isUp ? 'Go up' : 'Go down'} → Floor ${seg.transitionToFloor}`;
-      this.drawStairMarker(stairNode.x, stairNode.y, label);
+      const label = `${isUp ? 'Поднимитесь' : 'Спуститесь'} → Этаж ${seg.transitionToFloor}`;
+      this.drawStairMarker(
+        renderX,
+        renderY,
+        label,
+        unit,
+        this.isPinAbove(stairNode)
+      );
+    }
+
+    if (this.startNode && this.startNode.floor === this.currentFloor) {
+      const renderX = this.startNode.x * scaleX;
+      const renderY = this.startNode.y * scaleY;
+      this.drawPin(
+        renderX,
+        renderY,
+        '#10B981', 'A', 'Старт', unit
+      );
+    }
+
+    if (this.endNode && this.endNode.floor === this.currentFloor) {
+      const renderX = this.endNode.x * scaleX;
+      const renderY = this.endNode.y * scaleY;
+      this.drawPin(
+        renderX,
+        renderY,
+        '#EF4444', 'B', 'Финиш', unit
+      );
     }
   }
 
-  private drawPin(x: number, y: number, color: string, label: string, title: string): void {
+  /**
+   * Точка A/B стоит почти над лестницей? Тогда подпись перехода лучше
+   * опустить под маркер, иначе два баннера нарисуются друг поверх друга.
+   */
+  private isPinAbove(stairNode: GraphNode): boolean {
+    return [this.startNode, this.endNode].some(pin =>
+      pin !== null &&
+      pin.floor === this.currentFloor &&
+      pin.y < stairNode.y &&
+      stairNode.y - pin.y < 60 &&
+      Math.abs(pin.x - stairNode.x) < 150
+    );
+  }
+
+  private drawPin(
+    x: number,
+    y: number,
+    color: string,
+    label: string,
+    title: string,
+    unit: number
+  ): void {
     this.ctx.save();
 
     // Halo
     this.ctx.beginPath();
-    this.ctx.arc(x, y, 16, 0, Math.PI * 2);
+    this.ctx.arc(x, y, 16 * unit, 0, Math.PI * 2);
     this.ctx.fillStyle = color + '33';
     this.ctx.fill();
 
     // Badge
     this.ctx.beginPath();
-    this.ctx.arc(x, y, 12, 0, Math.PI * 2);
+    this.ctx.arc(x, y, 12 * unit, 0, Math.PI * 2);
     this.ctx.fillStyle = color;
     this.ctx.fill();
     this.ctx.strokeStyle = '#FFFFFF';
-    this.ctx.lineWidth = 2.5;
+    this.ctx.lineWidth = 2.5 * unit;
     this.ctx.stroke();
 
     this.ctx.fillStyle = '#FFFFFF';
-    this.ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+    this.ctx.font = `bold ${12 * unit}px "Plus Jakarta Sans", sans-serif`;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText(label, x, y + 0.5);
+    this.ctx.fillText(label, x, y + 0.5 * unit);
 
     // Tooltip
-    this.ctx.font = '600 11px "Plus Jakarta Sans", sans-serif';
+    this.ctx.font = `600 ${11 * unit}px "Plus Jakarta Sans", sans-serif`;
     const textWidth = this.ctx.measureText(title).width;
-    const bannerW = textWidth + 14;
-    const bannerH = 19;
+    const bannerW = textWidth + 14 * unit;
+    const bannerH = 19 * unit;
     const bannerX = x - bannerW / 2;
-    const bannerY = y - 34;
+    const bannerY = y - 34 * unit;
 
     this.ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
-    this.roundRect(bannerX, bannerY, bannerW, bannerH, 5);
+    this.roundRect(bannerX, bannerY, bannerW, bannerH, 5 * unit);
     this.ctx.fill();
 
     this.ctx.fillStyle = '#FFFFFF';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText(title, x, bannerY + bannerH / 2 + 0.5);
+    this.ctx.fillText(title, x, bannerY + bannerH / 2 + 0.5 * unit);
 
     this.ctx.restore();
   }
 
-  private drawStairMarker(x: number, y: number, label: string): void {
+  private drawStairMarker(
+    x: number,
+    y: number,
+    label: string,
+    unit: number,
+    bannerBelow: boolean = false
+  ): void {
     this.ctx.save();
 
     this.ctx.beginPath();
-    this.ctx.arc(x, y, 14, 0, Math.PI * 2);
+    this.ctx.arc(x, y, 14 * unit, 0, Math.PI * 2);
     this.ctx.fillStyle = '#8B5CF6';
     this.ctx.fill();
     this.ctx.strokeStyle = '#FFFFFF';
-    this.ctx.lineWidth = 2.5;
+    this.ctx.lineWidth = 2.5 * unit;
     this.ctx.stroke();
 
     this.ctx.fillStyle = '#FFFFFF';
-    this.ctx.font = '13px "Plus Jakarta Sans", sans-serif';
+    this.ctx.font = `${13 * unit}px "Plus Jakarta Sans", sans-serif`;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText('🛗', x, y + 0.5);
+    this.ctx.fillText('🛗', x, y + 0.5 * unit);
 
-    this.ctx.font = '700 11px "Plus Jakarta Sans", sans-serif';
+    this.ctx.font = `700 ${11 * unit}px "Plus Jakarta Sans", sans-serif`;
     const textWidth = this.ctx.measureText(label).width;
-    const bannerW = textWidth + 16;
-    const bannerH = 22;
+    const bannerW = textWidth + 16 * unit;
+    const bannerH = 22 * unit;
     const bannerX = x - bannerW / 2;
-    const bannerY = y - 38;
+    const bannerY = bannerBelow ? y + 16 * unit : y - 38 * unit;
 
     this.ctx.fillStyle = '#4C1D95';
-    this.roundRect(bannerX, bannerY, bannerW, bannerH, 6);
+    this.roundRect(bannerX, bannerY, bannerW, bannerH, 6 * unit);
     this.ctx.fill();
     this.ctx.strokeStyle = '#DDD6FE';
-    this.ctx.lineWidth = 1.5;
+    this.ctx.lineWidth = 1.5 * unit;
     this.ctx.stroke();
 
     this.ctx.fillStyle = '#FFFFFF';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText(label, x, bannerY + bannerH / 2 + 0.5);
+    this.ctx.fillText(label, x, bannerY + bannerH / 2 + 0.5 * unit);
 
     this.ctx.restore();
   }
@@ -432,17 +588,17 @@ export class MapRenderer {
   /** Scale the stage so the whole plan is visible, centered in the viewport. */
   private fitToContainer(): void {
     const rect = this.container.getBoundingClientRect();
-    const stageW = parseFloat(this.stage.style.width) || this.canvas.width || 750;
-    const stageH = parseFloat(this.stage.style.height) || this.canvas.height || 750;
+    const stageW = parseFloat(this.stage.style.width) || BASE_WIDTH;
+    const stageH = parseFloat(this.stage.style.height) || BASE_HEIGHT;
 
     const padding = 12;
     const availableW = Math.max(1, rect.width - padding * 2);
     const availableH = Math.max(1, rect.height - padding * 2);
 
-    this.fitScale = Math.min(availableW / stageW, availableH / stageH);
-    this.scale = this.fitScale;
-    this.minScale = this.fitScale * 0.85;
-    this.maxScale = this.fitScale * 7;
+    const fitScale = Math.min(availableW / stageW, availableH / stageH);
+    this.scale = fitScale;
+    this.minScale = fitScale * 0.85;
+    this.maxScale = fitScale * 7;
 
     this.translateX = (rect.width - stageW * this.scale) / 2;
     this.translateY = (rect.height - stageH * this.scale) / 2;
@@ -453,6 +609,10 @@ export class MapRenderer {
   private applyTransform(): void {
     this.stage.style.transform =
       `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale})`;
+
+    // Canvas живёт в screen-space, поэтому после каждого zoom/pan его нужно
+    // пересчитать и перерисовать — иначе маршрут «отклеится» от плана.
+    this.scheduleOverlayRender();
   }
 
   private initResizeObserver(): void {
@@ -460,5 +620,9 @@ export class MapRenderer {
       this.fitToContainer();
     });
     ro.observe(this.container);
+
+    // Явные слушатели по требованиям: поворот экрана и изменение окна.
+    window.addEventListener('resize', this.handleViewportResize);
+    window.addEventListener('orientationchange', this.handleViewportResize);
   }
 }

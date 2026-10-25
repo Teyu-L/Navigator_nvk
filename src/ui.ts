@@ -1,5 +1,6 @@
 import { GraphNode, SearchResult, NavigationPath, RouteSegment } from './types';
 import { GraphService } from './graph';
+import { getDisplayName } from './labels';
 
 export interface UICallbacks {
   onRouteCalculate: (startNodeId: string, endNodeId: string) => void;
@@ -54,6 +55,9 @@ export class UIController {
   private initSearchInputs(): void {
     // Start Input typing
     this.startInput.addEventListener('input', () => {
+      const hadRoute = Boolean(this.selectedStartNode && this.selectedEndNode);
+      this.selectedStartNode = null;
+      if (hadRoute) this.clearRoute();
       const query = this.startInput.value;
       this.renderDropdown(this.startDropdown, query, (result) => {
         this.selectedStartNode = result.node;
@@ -64,7 +68,15 @@ export class UIController {
     });
 
     this.startInput.addEventListener('focus', () => {
-      if (!this.startInput.value) {
+      if (this.selectedStartNode) return;
+      if (this.startInput.value) {
+        this.renderDropdown(this.startDropdown, this.startInput.value, (result) => {
+          this.selectedStartNode = result.node;
+          this.startInput.value = result.displayName;
+          this.startDropdown.classList.add('hidden');
+          this.triggerCalculationIfReady();
+        });
+      } else {
         this.renderAllNodesDropdown(this.startDropdown, (result) => {
           this.selectedStartNode = result.node;
           this.startInput.value = result.displayName;
@@ -76,6 +88,9 @@ export class UIController {
 
     // End Input typing
     this.endInput.addEventListener('input', () => {
+      const hadRoute = Boolean(this.selectedStartNode && this.selectedEndNode);
+      this.selectedEndNode = null;
+      if (hadRoute) this.clearRoute();
       const query = this.endInput.value;
       this.renderDropdown(this.endDropdown, query, (result) => {
         this.selectedEndNode = result.node;
@@ -86,7 +101,15 @@ export class UIController {
     });
 
     this.endInput.addEventListener('focus', () => {
-      if (!this.endInput.value) {
+      if (this.selectedEndNode) return;
+      if (this.endInput.value) {
+        this.renderDropdown(this.endDropdown, this.endInput.value, (result) => {
+          this.selectedEndNode = result.node;
+          this.endInput.value = result.displayName;
+          this.endDropdown.classList.add('hidden');
+          this.triggerCalculationIfReady();
+        });
+      } else {
         this.renderAllNodesDropdown(this.endDropdown, (result) => {
           this.selectedEndNode = result.node;
           this.endInput.value = result.displayName;
@@ -129,7 +152,7 @@ export class UIController {
     dropdownEl.innerHTML = '';
 
     if (results.length === 0) {
-      dropdownEl.innerHTML = `<div class="dropdown-empty">No locations found</div>`;
+      dropdownEl.innerHTML = `<div class="dropdown-empty">Ничего не найдено</div>`;
       dropdownEl.classList.remove('hidden');
       return;
     }
@@ -139,7 +162,7 @@ export class UIController {
       item.className = 'dropdown-item';
       item.innerHTML = `
         <div class="item-title">${res.displayName}</div>
-        <div class="item-sub">Matched: "${res.matchedAlias}" • Floor ${res.node.floor}</div>
+        <div class="item-sub">Совпадение: "${res.matchedAlias}" • Этаж ${res.node.floor}</div>
       `;
       item.addEventListener('click', () => onSelect(res));
       dropdownEl.appendChild(item);
@@ -152,16 +175,14 @@ export class UIController {
     dropdownEl: HTMLElement,
     onSelect: (res: SearchResult) => void
   ): void {
-    const allNodes = this.graphService.getAllNodes();
-    // Filter out internal passage nodes with _Node
-    const selectable = allNodes.filter(n => !n.id.includes('_Node'));
+    const selectable = this.graphService.getAllNodes();
 
     dropdownEl.innerHTML = '';
     selectable.slice(0, 10).forEach(node => {
       const res: SearchResult = {
         node,
-        matchedAlias: node.id,
-        displayName: this.graphService.getDisplayName(node),
+        matchedAlias: node.rawId,
+        displayName: getDisplayName(node),
         score: 100
       };
 
@@ -169,7 +190,7 @@ export class UIController {
       item.className = 'dropdown-item';
       item.innerHTML = `
         <div class="item-title">${res.displayName}</div>
-        <div class="item-sub">Floor ${node.floor}</div>
+        <div class="item-sub">Этаж ${node.floor}</div>
       `;
       item.addEventListener('click', () => onSelect(res));
       dropdownEl.appendChild(item);
@@ -182,6 +203,14 @@ export class UIController {
     if (this.selectedStartNode && this.selectedEndNode) {
       this.callbacks.onRouteCalculate(this.selectedStartNode.id, this.selectedEndNode.id);
     }
+  }
+
+  /** Сбрасывает построенный маршрут, когда пользователь начинает править точку. */
+  private clearRoute(): void {
+    this.routeInfoContainer.classList.add('hidden');
+    this.segmentBar.innerHTML = '';
+    this.segmentBar.classList.add('hidden');
+    this.callbacks.onClearRoute();
   }
 
   private initFloorButtons(): void {
@@ -212,88 +241,64 @@ export class UIController {
         this.startInput.value = '';
         this.endInput.value = '';
         this.routeInfoContainer.classList.add('hidden');
+        this.segmentBar.innerHTML = '';
         this.segmentBar.classList.add('hidden');
         this.callbacks.onClearRoute();
       });
     }
-
-    // Quick chips
-    const quickChips = document.querySelectorAll('.chip');
-    quickChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const targetQuery = chip.getAttribute('data-target') || '';
-        const searchRes = this.graphService.searchNodes(targetQuery);
-        if (searchRes.length > 0) {
-          const match = searchRes[0];
-          if (!this.selectedStartNode) {
-            this.selectedStartNode = match.node;
-            this.startInput.value = match.displayName;
-          } else {
-            this.selectedEndNode = match.node;
-            this.endInput.value = match.displayName;
-          }
-          this.triggerCalculationIfReady();
-        }
-      });
-    });
   }
 
-  /**
-   * Updates route summary banner and segment progress indicators.
-   */
+  /** Показывает только статус маршрута и шаги по этажам — без метров и времени. */
   public updateRouteInfo(path: NavigationPath | null, activeSegmentIndex: number = 0): void {
     if (!path) {
       this.routeInfoContainer.innerHTML = `
         <div class="route-error">
-          ⚠️ No direct path found between the selected locations.
+          ⚠️ Маршрут между выбранными точками не найден.
         </div>
       `;
       this.routeInfoContainer.classList.remove('hidden');
+      this.segmentBar.innerHTML = '';
       this.segmentBar.classList.add('hidden');
       return;
     }
 
-    if (path.totalDistance === 0 && path.segments.length === 1) {
+    const samePoint = path.segments.length === 1 && path.segments[0].nodes.length === 1;
+    if (samePoint) {
       this.routeInfoContainer.innerHTML = `
         <div class="route-same">
-          📍 Start and Destination are the same point!
+          📍 Начало и назначение совпадают!
         </div>
       `;
       this.routeInfoContainer.classList.remove('hidden');
+      this.segmentBar.innerHTML = '';
       this.segmentBar.classList.add('hidden');
       return;
     }
 
-    // Distance estimation: ~1 pixel = 0.5 meters
-    const approxMeters = Math.round(path.totalDistance * 0.5);
-    const approxTimeMin = Math.max(1, Math.ceil(approxMeters / 70));
-
-    const isMultiFloor = path.segments.length > 1;
-
     this.routeInfoContainer.innerHTML = `
-      <div class="route-summary">
-        <div class="summary-metric">
-          <span class="metric-icon">🚶</span>
-          <span class="metric-value">~${approxMeters}m</span>
-        </div>
-        <div class="summary-metric">
-          <span class="metric-icon">⏱️</span>
-          <span class="metric-value">~${approxTimeMin} min</span>
-        </div>
-        <div class="summary-metric">
-          <span class="metric-icon">🏢</span>
-          <span class="metric-value">${path.segments.length} Floor${path.segments.length > 1 ? 's' : ''}</span>
-        </div>
-      </div>
+      <div class="route-status">Маршрут: ${this.formatFloors(path.segments.length)}</div>
     `;
     this.routeInfoContainer.classList.remove('hidden');
 
-    // Segment steps UI
-    if (isMultiFloor) {
+    if (path.segments.length > 1) {
       this.renderSegmentBar(path.segments, activeSegmentIndex);
     } else {
+      this.segmentBar.innerHTML = '';
       this.segmentBar.classList.add('hidden');
     }
+  }
+
+  /** Russian pluralization: 1 этаж, 2 этажа, 5 этажей. */
+  private formatFloors(count: number): string {
+    const mod10 = count % 10;
+    const mod100 = count % 100;
+    let word = 'этажей';
+    if (mod10 === 1 && mod100 !== 11) {
+      word = 'этаж';
+    } else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+      word = 'этажа';
+    }
+    return `${count} ${word}`;
   }
 
   private renderSegmentBar(segments: RouteSegment[], activeIndex: number): void {
@@ -303,13 +308,13 @@ export class UIController {
       const stepBtn = document.createElement('button');
       stepBtn.className = `segment-step ${idx === activeIndex ? 'active' : ''}`;
       
-      const transitionText = seg.transitionToFloor !== undefined 
-        ? `→ Floor ${seg.transitionToFloor}`
-        : 'Destination';
+      const stepLabel = seg.transitionToFloor !== undefined
+        ? `Этаж ${seg.floor} → Этаж ${seg.transitionToFloor}`
+        : `Этаж ${seg.floor} · финиш`;
 
       stepBtn.innerHTML = `
         <span class="step-num">${idx + 1}</span>
-        <span class="step-label">Floor ${seg.floor} ${transitionText}</span>
+        <span class="step-label">${stepLabel}</span>
       `;
 
       stepBtn.addEventListener('click', () => {
@@ -340,8 +345,8 @@ export class UIController {
 
     this.selectedStartNode = start;
     this.selectedEndNode = end;
-    this.startInput.value = this.graphService.getDisplayName(start);
-    this.endInput.value = this.graphService.getDisplayName(end);
+    this.startInput.value = getDisplayName(start);
+    this.endInput.value = getDisplayName(end);
     this.callbacks.onRouteCalculate(start.id, end.id);
   }
 }

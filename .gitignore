@@ -4,11 +4,6 @@ node_modules/
 # Build output
 dist/
 
-# Python tooling used to author the graphs
-venv/
-__pycache__/
-*.pyc
-
 # Editor / OS
 .idea/
 .vscode/
